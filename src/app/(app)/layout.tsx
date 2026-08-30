@@ -10,9 +10,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const settings = await prisma.appSetting.findUnique({ where: { id: "site" } });
 
   return (
-    <div className="flex min-h-screen bg-[#F8FAFC] dark:bg-black">
+    <div className="flex min-h-screen bg-[#FAF6F0] dark:bg-[#120C08]">
       <Sidebar logoPath={settings?.logoPath} />
-      <main className="flex-1 overflow-auto bg-[#F8FAFC] dark:bg-black">
+      <main className="flex-1 overflow-auto bg-[#FAF6F0] dark:bg-[#120C08]">
         {children}
       </main>
     </div>

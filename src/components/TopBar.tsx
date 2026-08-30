@@ -9,7 +9,7 @@ export function TopBar() {
   return (
     <header className="flex items-center justify-between px-6 py-3 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800">
       <div>
-        <h1 className="text-lg font-semibold text-primary-600 dark:text-primary-300">DueFlow</h1>
+        <h1 className="text-lg font-semibold text-brand-500 dark:text-brand-300">DueFlow</h1>
       </div>
       <div className="flex items-center gap-3">
         <ThemeToggle />

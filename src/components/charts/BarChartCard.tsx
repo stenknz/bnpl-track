@@ -33,21 +33,21 @@ export function BarChartCard({ dueNext15, dueNext30, dueNext90, partnerDueNext15
   ];
 
   return (
-    <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
-      <h3 className="font-semibold mb-4">Due Amounts</h3>
+    <div className="ledger-card p-5">
+      <h3 className="font-display font-bold text-espresso-500 dark:text-brand-100 mb-4">Due Amounts</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0} initialDimension={{ width: 1, height: 1 }}>
           <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis dataKey="name" tick={{ fontSize: 12 }} stroke="#9ca3af" />
-            <YAxis tick={{ fontSize: 12 }} stroke="#9ca3af" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#E8DDD0" />
+            <XAxis dataKey="name" tick={{ fontSize: 12 }} stroke="#8E5C42" />
+            <YAxis tick={{ fontSize: 12 }} stroke="#8E5C42" />
             <Tooltip
-              contentStyle={{ borderRadius: "12px", border: "1px solid #e5e7eb", background: "white" }}
+              contentStyle={{ borderRadius: "12px", border: "1px solid #E8DDD0", background: "white" }}
               formatter={(value) => [`$${Number(value).toFixed(2)}`, undefined]}
             />
             {hasPartner && <Legend />}
-            <Bar dataKey="Yours" fill="#C04740" radius={[6, 6, 0, 0]} />
-            {hasPartner && <Bar dataKey="Partner" fill="#E88C5E" radius={[6, 6, 0, 0]} />}
+            <Bar dataKey="Yours" fill="#A84A2E" radius={[6, 6, 0, 0]} />
+            {hasPartner && <Bar dataKey="Partner" fill="#D4895E" radius={[6, 6, 0, 0]} />}
           </BarChart>
         </ResponsiveContainer>
       </div>

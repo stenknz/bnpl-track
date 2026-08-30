@@ -29,7 +29,7 @@ export function Sidebar({ logoPath }: SidebarProps) {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="lg:hidden fixed top-3 left-3 z-50 p-2 rounded-xl bg-white dark:bg-neutral-900 shadow-md"
+        className="lg:hidden fixed top-3 left-3 z-50 p-2 rounded-xl bg-espresso-500 text-brand-100 shadow-md"
         aria-label="Open menu"
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -38,24 +38,24 @@ export function Sidebar({ logoPath }: SidebarProps) {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-40 bg-black/30 lg:hidden" onClick={() => setOpen(false)} />
+        <div className="fixed inset-0 z-40 bg-black/40 lg:hidden" onClick={() => setOpen(false)} />
       )}
 
-      <aside className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-white dark:bg-black backdrop-blur-xl border-r border-slate-200 dark:border-white/[0.08] flex flex-col transition-transform lg:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"}`}>
-        <div className="p-5 border-b border-slate-200 dark:border-white/5 flex items-center gap-3">
+      <aside className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-espresso-500 dark:bg-[#1A0F0A] flex flex-col transition-transform lg:translate-x-0 ${open ? "translate-x-0" : "-translate-x-full"}`}>
+        <div className="p-5 border-b border-white/[0.08] flex items-center gap-3">
           <SafeImage
             src={logoPath}
             alt="Logo"
             className="h-8 w-auto"
-            fallback={<div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary-600 to-violet-600 flex items-center justify-center text-white text-sm font-bold font-display">DF</div>}
+            fallback={<div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white text-xs font-bold font-display">DF</div>}
           />
           <div>
-            <span className="font-display font-bold text-lg tracking-tight text-slate-900 dark:text-white">DueFlow</span>
-            <p className="text-[10px] tracking-[0.12em] uppercase text-slate-500 dark:text-white/70 font-medium -mt-1">Money, clear.</p>
+            <span className="font-display font-bold text-lg tracking-tight text-white">DueFlow</span>
+            <p className="text-[10px] tracking-[0.14em] uppercase text-brand-300 font-medium -mt-0.5">Money, clear.</p>
           </div>
         </div>
 
-        <nav className="flex-1 p-3 space-y-1">
+        <nav className="flex-1 p-3 space-y-0.5">
           {navItems.map((item) => {
             const active =
               item.href === "/payments/my-upcoming"
@@ -68,10 +68,10 @@ export function Sidebar({ logoPath }: SidebarProps) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   active
-                    ? "bg-primary-50 dark:bg-primary-500/10 text-primary-700 dark:text-primary-300 border border-primary-200/50 dark:border-primary-500/20"
-                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 border border-transparent"
+                    ? "bg-brand-600 text-white"
+                    : "text-brand-200 hover:bg-white/[0.06] hover:text-white"
                 }`}
               >
                 <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={active ? 2 : 1.5}>
@@ -83,10 +83,10 @@ export function Sidebar({ logoPath }: SidebarProps) {
           })}
         </nav>
 
-        <div className="p-3 border-t border-neutral-200 dark:border-neutral-800">
+        <div className="p-3 border-t border-white/[0.08]">
           <button
             onClick={() => signOut({ redirect: false }).then(() => { window.location.href = "/login"; })}
-            className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+            className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-brand-300 hover:bg-white/[0.06] hover:text-white transition-colors"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

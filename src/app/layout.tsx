@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Sora, JetBrains_Mono } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
@@ -8,10 +8,11 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
-const sora = Sora({
-  variable: "--font-sora",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 const mono = JetBrains_Mono({
   variable: "--font-mono",
@@ -36,10 +37,7 @@ export default function RootLayout({
           __html: `(function(){try{var t=localStorage.getItem("theme")||"system";var r=t==="dark"||(t==="system"&&window.matchMedia("(prefers-color-scheme:dark)").matches);if(r)document.documentElement.classList.add("dark")}catch(e){}})()`,
         }} />
       </head>
-      <body className={`${inter.variable} ${sora.variable} ${mono.variable} font-sans antialiased bg-[#F8FAFC] dark:bg-black text-[#0F172A] dark:text-white`}>
-        <div className="glow-orb glow-orb--1" />
-        <div className="glow-orb glow-orb--2" />
-        <div className="glow-orb glow-orb--3" />
+      <body className={`${inter.variable} ${fraunces.variable} ${mono.variable} font-sans antialiased bg-[#FAF6F0] dark:bg-[#120C08] text-[#2A1F15] dark:text-[#F0E4D8]`}>
         <Providers>{children}</Providers>
       </body>
     </html>

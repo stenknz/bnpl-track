@@ -56,67 +56,65 @@ export function PaymentCard({ plan, currentUserId }: PaymentCardProps) {
   return (
     <Link
       href={`/payments/${plan.id}`}
-      className="block bg-white dark:bg-slate-800/40 rounded-2xl p-5 border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-md hover:border-slate-300 dark:hover:border-white/15 transition-all"
+      className="block ledger-card p-5 hover:border-brand-300 dark:hover:border-brand-700"
     >
       <div className="flex items-start gap-4">
-        <div className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+        <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-white/5 border border-brand-200/60 dark:border-white/10 flex items-center justify-center overflow-hidden shrink-0">
           <SafeImage
             src={plan.store?.logoPath}
             alt={plan.store?.name || "Store"}
             className="w-full h-full object-contain"
-            fallback={<svg className="w-5 h-5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            fallback={<svg className="w-5 h-5 text-espresso-300 dark:text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>}
           />
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <h3 className="font-display font-semibold tracking-tight truncate">{plan.title || plan.store?.name || "Untitled Plan"}</h3>
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <h3 className="font-display font-semibold tracking-tight text-espresso-500 dark:text-brand-100 truncate">{plan.title || plan.store?.name || "Untitled Plan"}</h3>
             {plan.vendor?.logoPath && (
               <SafeImage src={plan.vendor.logoPath} alt={plan.vendor.name} className="h-5 w-auto shrink-0" fallback={null} />
             )}
-            <div className="flex items-center gap-1.5">
-              <span className={`inline-block w-1.5 h-1.5 rounded-full ${plan.status === "ACTIVE" ? "bg-emerald-500" : plan.status === "COMPLETED" ? "bg-sky-500" : "bg-slate-400"}`} />
-              <span className="text-xs tracking-[0.04em] uppercase font-medium text-slate-500">{plan.status.charAt(0) + plan.status.slice(1).toLowerCase()}</span>
-              {plan.archivedAt && <span className="text-xs text-slate-400 font-medium">Archived</span>}
-              {!isOwner && plan.user && (
-                <span className="text-xs text-accent-600 dark:text-accent-300 font-medium ml-1">
-                  {plan.user.name || plan.user.email}
-                </span>
-              )}
-            </div>
+            <span className={`inline-block w-1.5 h-1.5 rounded-full ${plan.status === "ACTIVE" ? "bg-emerald-500" : plan.status === "COMPLETED" ? "bg-sky-500" : "bg-espresso-300"}`} />
+            <span className="text-xs tracking-[0.04em] uppercase font-medium text-espresso-400 dark:text-brand-300">{plan.status.charAt(0) + plan.status.slice(1).toLowerCase()}</span>
+            {plan.archivedAt && <span className="text-xs text-espresso-300 dark:text-brand-500 font-medium">Archived</span>}
+            {!isOwner && plan.user && (
+              <span className="text-xs text-brand-500 dark:text-brand-400 font-medium ml-1">
+                {plan.user.name || plan.user.email}
+              </span>
+            )}
           </div>
-          <p className="text-sm text-slate-500 font-mono tabular-nums">
-            ${plan.totalAmount.toFixed(2)} <span className="text-slate-400">·</span> {plan.frequency.charAt(0) + plan.frequency.slice(1).toLowerCase()}
+          <p className="text-sm text-espresso-400 dark:text-brand-300 font-mono tabular-nums">
+            ${plan.totalAmount.toFixed(2)} <span className="text-espresso-300 dark:text-brand-600">·</span> {plan.frequency.charAt(0) + plan.frequency.slice(1).toLowerCase()}
           </p>
         </div>
 
         <div className="text-right shrink-0">
-          <p className="text-lg font-display font-semibold tabular-nums">${plan.installmentAmount.toFixed(2)}</p>
-          <p className="text-xs tracking-[0.06em] uppercase font-medium text-slate-500">per installment</p>
+          <p className="text-lg font-display font-semibold tabular-nums text-espresso-500 dark:text-brand-100">${plan.installmentAmount.toFixed(2)}</p>
+          <p className="text-xs tracking-[0.06em] uppercase font-medium text-espresso-400 dark:text-brand-300">per installment</p>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center gap-3 text-xs text-slate-500">
+      <div className="mt-3 flex items-center gap-3 text-xs text-espresso-400 dark:text-brand-300">
         {nextDue && <span className="font-mono tabular-nums">Next: {formatDate(new Date(nextDue.dueDate))}</span>}
         {overdue > 0 && <span className="text-red-600 dark:text-red-400 font-medium">{overdue} overdue</span>}
         <span className="ml-auto font-mono tabular-nums">{paid}/{total} paid</span>
       </div>
 
-      <div className="mt-2 h-1.5 rounded-full bg-slate-100 dark:bg-white/5 overflow-hidden">
+      <div className="mt-2 h-1.5 rounded-full bg-brand-100 dark:bg-white/5 overflow-hidden">
         <div
-          className="h-full rounded-full bg-primary-600 dark:bg-primary-500 transition-all"
+          className="h-full rounded-full bg-brand-500 transition-all"
           style={{ width: `${progress}%` }}
         />
       </div>
 
       <div className="mt-2 flex items-center justify-between text-xs">
-        <span className="text-slate-500 font-mono tabular-nums">
+        <span className="text-espresso-400 dark:text-brand-300 font-mono tabular-nums">
           ${paidAmount.toFixed(2)} of ${plan.totalAmount.toFixed(2)} paid
         </span>
         {amountLeft > 0 && (
-          <span className="font-mono font-medium tabular-nums text-primary-700 dark:text-primary-300">
+          <span className="font-mono font-medium tabular-nums text-brand-600 dark:text-brand-400">
             ${amountLeft.toFixed(2)} left
           </span>
         )}

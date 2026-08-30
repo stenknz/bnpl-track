@@ -36,7 +36,7 @@ export function DayDetailDrawer({ open, onClose, events }: DayDetailDrawerProps)
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold">
+          <h3 className="text-lg font-semibold dark:text-brand-100">
             {events.length > 0
               ? new Date(events[0].start).toLocaleDateString("en-US", {
                   weekday: "long",
@@ -84,7 +84,7 @@ export function DayDetailDrawer({ open, onClose, events }: DayDetailDrawerProps)
               <Link
                 key={event.id}
                 href={href}
-                className="block p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
+                className="block p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:border-brand-300 dark:hover:border-brand-700 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -92,10 +92,10 @@ export function DayDetailDrawer({ open, onClose, events }: DayDetailDrawerProps)
                     style={{ backgroundColor: event.backgroundColor }}
                   />
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium truncate">
+                    <p className="font-medium truncate dark:text-brand-100">
                       {event.extendedProps.storeName}
                       {event.extendedProps.userName && (
-                        <span className="text-sm font-normal text-accent-500 ml-2">
+                         <span className="text-sm font-normal text-brand-500 ml-2">
                           {event.extendedProps.userName}
                         </span>
                       )}

@@ -83,26 +83,26 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 space-y-4">
-        <h3 className="font-semibold">Plan Details</h3>
+      <div className="ledger-card p-5 space-y-4">
+        <h3 className="font-semibold dark:text-brand-100">Plan Details</h3>
 
         <div>
-          <label className="block text-sm font-medium mb-1.5">Title (optional)</label>
+          <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Title (optional)</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
             placeholder="e.g. Apple MacBook Pro"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1.5">BNPL Provider (optional)</label>
+          <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">BNPL Provider (optional)</label>
           <select
             value={vendorId}
             onChange={(e) => setVendorId(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
+            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
           >
             <option value="">No provider</option>
             {vendors.map((v) => (
@@ -112,11 +112,11 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1.5">Store (optional)</label>
+          <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Store (optional)</label>
           <select
             value={storeId}
             onChange={(e) => setStoreId(e.target.value)}
-            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
+            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
           >
             <option value="">No store</option>
             {stores.map((s) => (
@@ -127,7 +127,7 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1.5">Total Amount ($)</label>
+            <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Total Amount ($)</label>
             <input
               type="number"
               step="0.01"
@@ -135,12 +135,12 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
               value={totalAmount}
               onChange={(e) => setTotalAmount(e.target.value)}
               required
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 dark:text-brand-100"
               placeholder="299.00"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">Installment Amount ($)</label>
+            <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Installment Amount ($)</label>
             <input
               type="number"
               step="0.01"
@@ -148,7 +148,7 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
               value={installmentAmount}
               onChange={(e) => setInstallmentAmount(e.target.value)}
               required
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 dark:text-brand-100"
               placeholder="49.99"
             />
           </div>
@@ -156,11 +156,11 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1.5">Frequency</label>
+            <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Frequency</label>
             <select
               value={frequency}
               onChange={(e) => setFrequency(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
             >
               <option value="WEEKLY">Weekly</option>
               <option value="BIWEEKLY">Bi-weekly</option>
@@ -168,19 +168,19 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">Start Date</label>
+            <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Start Date</label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               required
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1.5">Sharing</label>
+          <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Sharing</label>
           <div className="flex items-center gap-3">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -188,10 +188,10 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
                 name="visibility"
                 value="PRIVATE"
                 checked={visibility === "PRIVATE"}
-                onChange={() => setVisibility("PRIVATE")}
-                className="text-primary-600 focus:ring-primary-500"
+                 onChange={() => setVisibility("PRIVATE")}
+                className="text-brand-500 focus:ring-brand-500"
               />
-              <span className="text-sm">Private</span>
+              <span className="text-sm dark:text-brand-100">Private</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
               <input
@@ -199,28 +199,28 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
                 name="visibility"
                 value="SHARED"
                 checked={visibility === "SHARED"}
-                onChange={() => setVisibility("SHARED")}
-                className="text-primary-600 focus:ring-primary-500"
+                 onChange={() => setVisibility("SHARED")}
+                className="text-brand-500 focus:ring-brand-500"
               />
-              <span className="text-sm">Shared with partners</span>
+              <span className="text-sm dark:text-brand-100">Shared with partners</span>
             </label>
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1.5">Notes (optional)</label>
+          <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Notes (optional)</label>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={3}
-            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 resize-none"
+            className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 dark:text-brand-100 dark:placeholder:text-neutral-500 resize-none"
             placeholder="Any additional details..."
           />
         </div>
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800">
-        <h3 className="font-semibold mb-3">Installment Preview</h3>
+      <div className="ledger-card p-5">
+        <h3 className="font-semibold mb-3 dark:text-brand-100">Installment Preview</h3>
         <InstallmentPreview
           totalAmount={Number(totalAmount) || 0}
           installmentAmount={Number(installmentAmount) || 0}
@@ -233,7 +233,7 @@ export function PaymentForm({ initialData }: PaymentFormProps) {
         <button
           type="submit"
           disabled={saving}
-          className="px-6 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white font-medium transition-colors"
+          className="px-6 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white font-medium transition-colors"
         >
           {saving ? "Saving..." : initialData ? "Save Changes" : "Create Plan"}
         </button>

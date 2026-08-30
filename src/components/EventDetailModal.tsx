@@ -90,14 +90,14 @@ export function EventDetailModal({ event, onClose }: EventDetailModalProps) {
           {ep.userName && (
             <div className="flex justify-between items-center">
               <span className="text-sm text-neutral-500">Owner</span>
-              <span className="text-sm text-accent-500">{ep.userName}</span>
+               <span className="text-sm text-brand-500">{ep.userName}</span>
             </div>
           )}
         </div>
 
         <Link
           href={href}
-          className="mt-5 block w-full text-center px-4 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors"
+          className="mt-5 block w-full text-center px-4 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-medium transition-colors"
         >
           View Details
         </Link>

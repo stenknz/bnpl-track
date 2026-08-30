@@ -111,24 +111,24 @@ export default function SubscriptionsPage() {
   return (
     <div className="p-6 space-y-6 max-w-6xl">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white pl-12 lg:pl-0">Subscriptions</h1>
-        <div className="flex items-center gap-2 bg-white dark:bg-white/10 rounded-full p-1 border border-slate-200 dark:border-white/10 shrink-0">
+        <h1 className="text-2xl font-bold text-espresso-500 dark:text-white pl-12 lg:pl-0">Subscriptions</h1>
+        <div className="flex items-center gap-2 bg-white dark:bg-white/10 rounded-full p-1 border border-brand-200 dark:border-white/10 shrink-0">
           <button onClick={() => setShared(false)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${!shared ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm" : "text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white"}`}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${!shared ? "bg-espresso-500 dark:bg-white text-white dark:text-espresso-500 shadow-sm" : "text-espresso-400 dark:text-white/70 hover:text-espresso-500 dark:hover:text-white"}`}
           >My View</button>
           <button onClick={() => setShared(true)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${shared ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm" : "text-slate-600 dark:text-white/70 hover:text-slate-900 dark:hover:text-white"}`}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${shared ? "bg-espresso-500 dark:bg-white text-white dark:text-espresso-500 shadow-sm" : "text-espresso-400 dark:text-white/70 hover:text-espresso-500 dark:hover:text-white"}`}
           >Shared View</button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+        <div className="ledger-card p-5">
           <p className="text-sm text-neutral-500">Monthly Cost</p>
-          <p className="text-3xl font-bold">
+          <p className="text-3xl font-bold dark:text-brand-100">
             {shared ? (
               <>
-                <span className="text-primary-600">${ownTotal.toFixed(2)}</span>
+                <span className="text-brand-500">${ownTotal.toFixed(2)}</span>
                 {partnerTotal > 0 && (
                   <span className="text-neutral-400 text-xl ml-2">+ ${partnerTotal.toFixed(2)} shared</span>
                 )}
@@ -136,46 +136,46 @@ export default function SubscriptionsPage() {
             ) : `$${ownTotal.toFixed(2)}`}
           </p>
         </div>
-        <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+        <div className="ledger-card p-5">
           <p className="text-sm text-neutral-500">Active Subscriptions</p>
-          <p className="text-3xl font-bold">{allSubs.length}</p>
+          <p className="text-3xl font-bold dark:text-brand-100">{allSubs.length}</p>
         </div>
       </div>
 
       <button
         onClick={() => { resetForm(); setShowForm(!showForm); }}
-        className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors text-sm"
+        className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium transition-colors text-sm"
       >
         {showForm ? "Cancel" : "+ Add Subscription"}
       </button>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4 max-w-2xl">
-          <h3 className="font-semibold">{editId ? "Edit Subscription" : "New Subscription"}</h3>
+        <form onSubmit={handleSubmit} className="ledger-card p-5 space-y-4 max-w-2xl">
+          <h3 className="font-semibold dark:text-brand-100">{editId ? "Edit Subscription" : "New Subscription"}</h3>
           <div>
-            <label className="block text-sm font-medium mb-1">Service Name</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Service Name</label>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} required
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
               placeholder="Netflix" />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Price ($)</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Price ($)</label>
               <input type="number" step="0.01" min="0" value={price} onChange={(e) => setPrice(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 dark:text-brand-100"
                 placeholder="19.99" />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Payment Day</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Payment Day</label>
               <input type="number" min="1" max="31" value={dayOfMonth} onChange={(e) => setDayOfMonth(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
                 placeholder="15" />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Billing Cycle</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Billing Cycle</label>
             <select value={billingCycle} onChange={(e) => setBillingCycle(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]">
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark]">
               <option value="MONTHLY">Monthly</option>
               <option value="QUARTERLY">Quarterly</option>
               <option value="BI_ANNUAL">Bi-Annual</option>
@@ -183,27 +183,27 @@ export default function SubscriptionsPage() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Logo</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Logo</label>
             <LogoUploader currentLogo={logoPath} onUpload={setLogoPath} type="subscription" />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Sharing</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Sharing</label>
             <div className="flex items-center gap-3">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="radio" name="vis" value="PRIVATE" checked={visibility === "PRIVATE"}
-                  onChange={() => setVisibility("PRIVATE")} className="text-primary-600 focus:ring-primary-500" />
-                <span className="text-sm">Private</span>
+                  onChange={() => setVisibility("PRIVATE")} className="text-brand-500 focus:ring-brand-500" />
+                <span className="text-sm dark:text-brand-100">Private</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="radio" name="vis" value="SHARED" checked={visibility === "SHARED"}
-                  onChange={() => setVisibility("SHARED")} className="text-primary-600 focus:ring-primary-500" />
-                <span className="text-sm">Shared with partners</span>
+                  onChange={() => setVisibility("SHARED")} className="text-brand-500 focus:ring-brand-500" />
+                <span className="text-sm dark:text-brand-100">Shared with partners</span>
               </label>
             </div>
           </div>
           <div className="flex gap-3">
             <button type="submit" disabled={saving}
-              className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white font-medium transition-colors text-sm">
+              className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white font-medium transition-colors text-sm">
               {saving ? "Saving..." : editId ? "Save Changes" : "Add Subscription"}
             </button>
             <button type="button" onClick={() => { resetForm(); setShowForm(false); }}
@@ -224,33 +224,33 @@ export default function SubscriptionsPage() {
             const isPartner = partnerSubs.some((p) => p.id === sub.id);
             return (
               <div key={sub.id} onClick={() => router.push(`/subscriptions/${sub.id}`)}
-                className="cursor-pointer bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+                className="cursor-pointer ledger-card p-5 hover:border-brand-300 dark:hover:border-brand-700 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center overflow-hidden shrink-0">
                     <SafeImage
                       src={sub.logoPath}
                       alt={sub.name}
                       className="w-full h-full object-contain"
-                      fallback={<span className="text-lg font-bold text-primary-600">{sub.name[0]}</span>}
+                       fallback={<span className="text-lg font-bold text-brand-500">{sub.name[0]}</span>}
                     />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className="font-semibold">{sub.name}</h3>
+                      <h3 className="font-semibold dark:text-brand-100">{sub.name}</h3>
                       {!isPartner && sub.visibility === "SHARED" && (
-                        <span className="text-xs bg-accent-50 dark:bg-accent-900/20 text-accent-600 dark:text-accent-400 px-1.5 py-0.5 rounded font-medium shrink-0">Shared</span>
+                         <span className="text-xs bg-brand-50 dark:bg-brand-900/20 text-brand-500 dark:text-brand-400 px-1.5 py-0.5 rounded font-medium shrink-0">Shared</span>
                       )}
                     </div>
                     <p className="text-sm text-neutral-500">${sub.price.toFixed(2)}{freqLabel[sub.billingCycle || "MONTHLY"]}</p>
                     <p className="text-xs text-neutral-400">Next: {getNextPaymentDate(sub.dayOfMonth)}</p>
                     {isPartner && sub.user && (
-                      <p className="text-xs text-accent-500 mt-1">{sub.user.name || sub.user.email}</p>
+                      <p className="text-xs text-brand-500 mt-1">{sub.user.name || sub.user.email}</p>
                     )}
                   </div>
                   {!isPartner && (
                     <div className="flex gap-1 shrink-0">
                       <button onClick={(e) => { e.stopPropagation(); handleEdit(sub); }}
-                        className="p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:text-primary-600 transition-colors">
+                        className="p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-500 hover:text-brand-500 transition-colors">
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                         </svg>

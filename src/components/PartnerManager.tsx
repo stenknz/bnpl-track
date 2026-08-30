@@ -66,12 +66,12 @@ export function PartnerManager({ onUpdate }: { onUpdate?: () => void }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="partner@example.com"
-          className="flex-1 px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 text-sm"
+          className="flex-1 px-3 py-2 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 text-sm dark:text-brand-100 dark:placeholder:text-neutral-500"
         />
         <button
           type="submit"
           disabled={loading}
-          className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors disabled:opacity-50"
+          className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-medium transition-colors disabled:opacity-50"
         >
           {loading ? "..." : "Add"}
         </button>
@@ -80,12 +80,12 @@ export function PartnerManager({ onUpdate }: { onUpdate?: () => void }) {
 
       {sharingWith.length > 0 && (
         <div>
-          <p className="text-sm font-medium mb-2">Sharing your payments with:</p>
+          <p className="text-sm font-medium mb-2 dark:text-brand-100">Sharing your payments with:</p>
           <div className="space-y-2">
             {sharingWith.map((link) => (
               <div key={link.id} className="flex items-center justify-between p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
                 <div>
-                  <p className="text-sm font-medium">{link.user.name || link.user.email}</p>
+                  <p className="text-sm font-medium dark:text-brand-100">{link.user.name || link.user.email}</p>
                   {link.user.name && <p className="text-xs text-neutral-500">{link.user.email}</p>}
                 </div>
                 <button
@@ -102,12 +102,12 @@ export function PartnerManager({ onUpdate }: { onUpdate?: () => void }) {
 
       {sharedBy.length > 0 && (
         <div>
-          <p className="text-sm font-medium mb-2">People sharing with you:</p>
+          <p className="text-sm font-medium mb-2 dark:text-brand-100">People sharing with you:</p>
           <div className="space-y-2">
             {sharedBy.map((link) => (
               <div key={link.id} className="flex items-center justify-between p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
                 <div>
-                  <p className="text-sm font-medium">{link.user.name || link.user.email}</p>
+                  <p className="text-sm font-medium dark:text-brand-100">{link.user.name || link.user.email}</p>
                   {link.user.name && <p className="text-xs text-neutral-500">{link.user.email}</p>}
                 </div>
               </div>

@@ -130,21 +130,21 @@ export default function UtilityDetailPage() {
 
   return (
     <div className="p-6 space-y-6 max-w-2xl">
-      <Link href="/utilities" className="text-sm text-primary-600 hover:underline inline-block">&larr; Back to Utilities</Link>
+      <Link href="/utilities" className="text-sm text-brand-500 hover:underline inline-block">&larr; Back to Utilities</Link>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+      <div className="ledger-card p-5">
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center overflow-hidden shrink-0">
             <SafeImage
               src={util.logoPath}
               alt={util.name}
               className="w-full h-full object-contain"
-              fallback={<span className="text-2xl font-bold text-primary-600">{util.name[0]}</span>}
+               fallback={<span className="text-2xl font-bold text-brand-500">{util.name[0]}</span>}
             />
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold">{util.name}</h1>
+              <h1 className="text-2xl font-bold dark:text-brand-100">{util.name}</h1>
               <span className={`text-xs font-medium px-2 py-0.5 rounded ${getStatusColor(util.status)}`}>
                 {util.status === "UNPAID" ? "Unpaid" : util.status === "PART_PAID" ? "Part Paid" : "Paid"}
               </span>
@@ -156,14 +156,14 @@ export default function UtilityDetailPage() {
             </p>
             {util.notes && <p className="text-sm text-neutral-500 mt-1">{util.notes}</p>}
             {!isOwner && util.user && (
-              <p className="text-sm text-accent-500 mt-1">{util.user.name || util.user.email}</p>
+              <p className="text-xs text-brand-500 mt-1">{util.user.name || util.user.email}</p>
             )}
           </div>
         </div>
         {isOwner && (
         <div className="mt-3 flex gap-2">
           <button onClick={() => setShowRecord(!showRecord)}
-            className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors text-sm">
+            className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium transition-colors text-sm">
             {showRecord ? "Cancel" : "+ Record Payment"}
           </button>
           <button onClick={openEdit}
@@ -179,65 +179,65 @@ export default function UtilityDetailPage() {
       </div>
 
       {showRecord && (
-        <form onSubmit={handleRecordPayment} className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-          <h3 className="font-semibold">Record Payment</h3>
+        <form onSubmit={handleRecordPayment} className="ledger-card p-5 space-y-4">
+          <h3 className="font-semibold dark:text-brand-100">Record Payment</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Amount ($)</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Amount ($)</label>
               <input type="number" step="0.01" min="0" max={remaining} value={amount} onChange={(e) => setAmount(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
                 placeholder={remaining.toFixed(2)} />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Date Paid</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Date Paid</label>
               <input type="date" value={paidAt} onChange={(e) => setPaidAt(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" />
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 dark:text-brand-100" />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Notes (optional)</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Notes (optional)</label>
             <input type="text" value={payNotes} onChange={(e) => setPayNotes(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" />
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
           </div>
           <button type="submit" disabled={saving}
-            className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white font-medium transition-colors text-sm">
+            className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white font-medium transition-colors text-sm">
             {saving ? "Saving..." : "Save Payment"}
           </button>
         </form>
       )}
 
       {showEdit && (
-        <form onSubmit={handleEditSubmit} className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-          <h3 className="font-semibold">Edit Utility Bill</h3>
+        <form onSubmit={handleEditSubmit} className="ledger-card p-5 space-y-4">
+          <h3 className="font-semibold dark:text-brand-100">Edit Utility Bill</h3>
           <div>
-            <label className="block text-sm font-medium mb-1">Name</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Name</label>
             <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} required
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" />
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Amount Due ($)</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Amount Due ($)</label>
               <input type="number" step="0.01" min="0" value={editAmountDue} onChange={(e) => setEditAmountDue(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" />
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 dark:text-brand-100" />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Due Date</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Due Date</label>
               <input type="date" value={editDueDate} onChange={(e) => setEditDueDate(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" />
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Logo</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Logo</label>
             <LogoUploader currentLogo={editLogo} onUpload={setEditLogo} type="utility" />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Notes</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Notes</label>
             <input type="text" value={editNotes} onChange={(e) => setEditNotes(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" />
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" />
           </div>
           <div className="flex gap-3">
             <button type="submit" disabled={saving}
-              className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white font-medium transition-colors text-sm">
+              className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white font-medium transition-colors text-sm">
               {saving ? "Saving..." : "Save Changes"}
             </button>
             <button type="button" onClick={() => setShowEdit(false)}
@@ -249,13 +249,13 @@ export default function UtilityDetailPage() {
       )}
 
       <div>
-        <h2 className="text-lg font-semibold mb-3">Payment History</h2>
+        <h2 className="text-lg font-semibold mb-3 dark:text-brand-100">Payment History</h2>
         {util.payments.length === 0 ? (
           <p className="text-sm text-neutral-400">No payments recorded yet.</p>
         ) : (
           <div className="space-y-2">
             {util.payments.map((p) => (
-              <div key={p.id} className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+              <div key={p.id} className="ledger-card p-4 flex items-center justify-between">
                 <div>
                   <p className="font-semibold text-emerald-600">${p.amount.toFixed(2)}</p>
                   <p className="text-xs text-neutral-400">{formatDate(new Date(p.paidAt))}</p>

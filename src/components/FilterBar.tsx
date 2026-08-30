@@ -33,20 +33,20 @@ export function FilterBar() {
         type="date"
         defaultValue={searchParams.get("from") || ""}
         onChange={(e) => setParam("from", e.target.value)}
-        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
         placeholder="From"
       />
       <input
         type="date"
         defaultValue={searchParams.get("to") || ""}
         onChange={(e) => setParam("to", e.target.value)}
-        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
         placeholder="To"
       />
       <select
         defaultValue={searchParams.get("storeId") || ""}
         onChange={(e) => setParam("storeId", e.target.value)}
-        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
       >
         <option value="">All stores</option>
         {stores.map((s) => (
@@ -56,7 +56,7 @@ export function FilterBar() {
       <select
         defaultValue={searchParams.get("status") || ""}
         onChange={(e) => setParam("status", e.target.value)}
-        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+        className="w-full sm:w-auto px-3 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-sm text-neutral-900 dark:text-neutral-100 [color-scheme:light] dark:[color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
       >
         <option value="">All statuses</option>
         <option value="ACTIVE">Active</option>

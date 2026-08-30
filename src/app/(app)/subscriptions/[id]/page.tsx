@@ -129,20 +129,20 @@ export default function SubscriptionDetailPage() {
 
   return (
     <div className="p-6 space-y-6 max-w-2xl">
-      <Link href="/subscriptions" className="text-sm text-primary-600 hover:underline inline-block">&larr; Back to Subscriptions</Link>
+      <Link href="/subscriptions" className="text-sm text-brand-500 hover:underline inline-block">&larr; Back to Subscriptions</Link>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+      <div className="ledger-card p-5">
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center overflow-hidden shrink-0">
             <SafeImage
               src={sub.logoPath}
               alt={sub.name}
               className="w-full h-full object-contain"
-              fallback={<span className="text-2xl font-bold text-primary-600">{sub.name[0]}</span>}
+               fallback={<span className="text-2xl font-bold text-brand-500">{sub.name[0]}</span>}
             />
           </div>
           <div>
-            <h1 className="text-2xl font-bold">{sub.name}</h1>
+            <h1 className="text-2xl font-bold dark:text-brand-100">{sub.name}</h1>
             <p className="text-lg text-neutral-500">${sub.price.toFixed(2)}{freqLabel[cycle]}</p>
             <p className="text-sm text-neutral-400">Bills on the {sub.dayOfMonth}{sub.dayOfMonth === 1 ? "st" : sub.dayOfMonth === 2 ? "nd" : sub.dayOfMonth === 3 ? "rd" : "th"} each {cycleLabel[cycle]}</p>
           </div>
@@ -151,50 +151,50 @@ export default function SubscriptionDetailPage() {
 
       {isOwner && (
         <button onClick={() => setShowForm(!showForm)}
-          className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-medium transition-colors text-sm">
+          className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium transition-colors text-sm">
           {showForm ? "Cancel" : "+ Record Payment"}
         </button>
       )}
 
       {showForm && (
-        <form onSubmit={handleRecord} className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-          <h3 className="font-semibold">Record Payment</h3>
+        <form onSubmit={handleRecord} className="ledger-card p-5 space-y-4">
+          <h3 className="font-semibold dark:text-brand-100">Record Payment</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Amount ($)</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Amount ($)</label>
               <input type="number" step="0.01" min="0" value={amount} onChange={(e) => setAmount(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
                 placeholder={sub.price.toFixed(2)} />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Date Paid</label>
+              <label className="block text-sm font-medium mb-1 dark:text-brand-100">Date Paid</label>
               <input type="date" value={paidAt} onChange={(e) => setPaidAt(e.target.value)} required
-                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" />
+                className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 dark:text-brand-100" />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Notes (optional)</label>
+            <label className="block text-sm font-medium mb-1 dark:text-brand-100">Notes (optional)</label>
             <input type="text" value={notes} onChange={(e) => setNotes(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500"
+              className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
               placeholder="e.g. paid early" />
           </div>
           <button type="submit" disabled={saving}
-            className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white font-medium transition-colors text-sm">
+            className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white font-medium transition-colors text-sm">
             {saving ? "Saving..." : "Save Payment"}
           </button>
         </form>
       )}
 
       <div>
-        <h2 className="text-lg font-semibold mb-3">Payment History</h2>
+        <h2 className="text-lg font-semibold mb-3 dark:text-brand-100">Payment History</h2>
         {payments.length === 0 ? (
           <p className="text-sm text-neutral-400">No payments recorded yet.</p>
         ) : (
           <div className="space-y-2">
             {payments.map((p) => (
-              <div key={p.id} className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+              <div key={p.id} className="ledger-card p-4 flex items-center justify-between">
                 <div>
-                  <p className="font-semibold">${p.amount.toFixed(2)}</p>
+                  <p className="font-semibold dark:text-brand-100">${p.amount.toFixed(2)}</p>
                   <p className="text-xs text-neutral-400">{formatDate(new Date(p.paidAt))}</p>
                   {p.notes && <p className="text-xs text-neutral-500 mt-0.5">{p.notes}</p>}
                 </div>
@@ -213,19 +213,19 @@ export default function SubscriptionDetailPage() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold mb-3">Upcoming Payments</h2>
+        <h2 className="text-lg font-semibold mb-3 dark:text-brand-100">Upcoming Payments</h2>
         <div className="space-y-2">
             {upcomingDates.map((date, i) => (
-              <div key={i} className="bg-white dark:bg-neutral-900 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+              <div key={i} className="ledger-card p-4 flex items-center justify-between">
                 <div>
-                  <p className="font-medium">${sub.price.toFixed(2)}</p>
+                  <p className="font-medium dark:text-brand-100">${sub.price.toFixed(2)}</p>
                   <p className="text-xs text-neutral-400">{formatDate(date)}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-medium px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-900/20 text-amber-600">Pending</span>
                   {isOwner && (
                     <button onClick={() => handleQuickPay(date)} disabled={saving}
-                      className="px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white text-xs font-medium transition-colors">
+                      className="px-3 py-1.5 rounded-lg bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white text-xs font-medium transition-colors">
                       Pay Now
                     </button>
                   )}

@@ -45,8 +45,8 @@ export function LogoUploader({ currentLogo, onUpload, type }: LogoUploaderProps)
       {...getRootProps()}
       className={`relative flex flex-col items-center justify-center gap-2 p-4 border-2 border-dashed rounded-xl cursor-pointer transition-colors ${
         isDragActive
-          ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20"
-          : "border-neutral-300 dark:border-neutral-700 hover:border-primary-400"
+          ? "border-brand-500 bg-brand-50 dark:bg-brand-900/20"
+          : "border-neutral-300 dark:border-neutral-700 hover:border-brand-400"
       }`}
     >
       <input {...getInputProps()} />

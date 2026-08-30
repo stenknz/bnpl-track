@@ -46,12 +46,12 @@ export default async function OverduePaymentsPage() {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Overdue Payments</h1>
+        <h1 className="text-2xl font-bold dark:text-brand-100">Overdue Payments</h1>
           <div className="flex gap-4 mt-2 text-sm overflow-x-auto">
-          <Link href="/payments" className="text-neutral-500 hover:text-primary-600">All</Link>
-          <Link href="/payments/upcoming" className="text-neutral-500 hover:text-primary-600">Upcoming</Link>
-          <Link href="/payments/overdue" className="text-primary-600 dark:text-primary-400 font-medium">Overdue</Link>
-          <Link href="/payments/paid" className="text-neutral-500 hover:text-primary-600">Paid</Link>
+          <Link href="/payments" className="text-neutral-500 hover:text-brand-500">All</Link>
+          <Link href="/payments/upcoming" className="text-neutral-500 hover:text-brand-500">Upcoming</Link>
+          <Link href="/payments/overdue" className="text-brand-500 dark:text-brand-400 font-medium">Overdue</Link>
+          <Link href="/payments/paid" className="text-neutral-500 hover:text-brand-500">Paid</Link>
         </div>
       </div>
 

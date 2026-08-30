@@ -52,22 +52,22 @@ export default function StoresPage() {
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white pl-12 lg:pl-0">Stores</h1>
-        <button onClick={() => { setShowForm(true); setEditId(null); setName(""); setLogoPath(""); }} className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors">
+        <h1 className="text-2xl font-bold text-espresso-500 dark:text-white pl-12 lg:pl-0">Stores</h1>
+        <button onClick={() => { setShowForm(true); setEditId(null); setName(""); setLogoPath(""); }} className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-medium transition-colors">
           + Add Store
         </button>
       </div>
 
       {showForm && (
-        <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 space-y-4">
-          <h3 className="font-semibold">{editId ? "Edit Store" : "New Store"}</h3>
+         <div className="ledger-card p-5 space-y-4">
+          <h3 className="font-semibold dark:text-brand-100">{editId ? "Edit Store" : "New Store"}</h3>
           <div>
-            <label className="block text-sm font-medium mb-1.5">Store Name</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500" placeholder="e.g. Nike, Amazon" />
+            <label className="block text-sm font-medium mb-1.5 dark:text-brand-100">Store Name</label>
+             <input value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500" placeholder="e.g. Nike, Amazon" />
           </div>
           <LogoUploader currentLogo={logoPath} onUpload={setLogoPath} />
           <div className="flex gap-2">
-            <button onClick={save} className="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors">{editId ? "Save" : "Create"}</button>
+             <button onClick={save} className="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-medium transition-colors">{editId ? "Save" : "Create"}</button>
             <button onClick={() => { setShowForm(false); setEditId(null); }} className="px-4 py-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 text-sm font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">Cancel</button>
           </div>
         </div>
@@ -75,21 +75,21 @@ export default function StoresPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {stores.map((store) => (
-          <div key={store.id} className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm flex items-center gap-4">
+          <div key={store.id} className="ledger-card p-5 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center overflow-hidden shrink-0">
               <SafeImage
                 src={store.logoPath}
                 alt={store.name}
                 className="w-full h-full object-contain"
-                fallback={<span className="text-lg font-bold text-primary-600">{store.name[0]}</span>}
+                 fallback={<span className="text-lg font-bold text-brand-500">{store.name[0]}</span>}
               />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-medium truncate">{store.name}</p>
+              <p className="font-medium truncate dark:text-brand-100">{store.name}</p>
               <p className="text-sm text-neutral-500">{store._count.paymentPlans} plans</p>
             </div>
             <div className="flex gap-1">
-              <button onClick={() => edit(store)} className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-primary-600 transition-colors">
+              <button onClick={() => edit(store)} className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-brand-500 transition-colors">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                 </svg>

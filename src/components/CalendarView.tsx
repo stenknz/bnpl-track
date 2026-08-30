@@ -69,7 +69,7 @@ export function CalendarView() {
 
   return (
     <>
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+      <div className="ledger-card p-5">
         <FullCalendar
           ref={calendarRef}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

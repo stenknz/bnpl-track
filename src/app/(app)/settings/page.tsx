@@ -44,41 +44,41 @@ export default function SettingsPage() {
 
   return (
     <div className="p-6 space-y-6 max-w-2xl">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-white pl-12 lg:pl-0">Settings</h1>
+      <h1 className="text-2xl font-bold text-espresso-500 dark:text-white pl-12 lg:pl-0">Settings</h1>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-        <h3 className="font-semibold">Profile</h3>
+      <div className="ledger-card p-5 space-y-4">
+        <h3 className="font-semibold dark:text-brand-100">Profile</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-sm text-neutral-500 mb-1">Name</label>
-            <p className="font-medium">{session?.user?.name || "—"}</p>
+            <p className="font-medium dark:text-brand-100">{session?.user?.name || "—"}</p>
           </div>
           <div>
             <label className="block text-sm text-neutral-500 mb-1">Email</label>
-            <p className="font-medium">{session?.user?.email || "—"}</p>
+            <p className="font-medium dark:text-brand-100">{session?.user?.email || "—"}</p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-        <h3 className="font-semibold">Site Branding</h3>
+      <div className="ledger-card p-5 space-y-4">
+        <h3 className="font-semibold dark:text-brand-100">Site Branding</h3>
         <p className="text-sm text-neutral-500">Upload a logo to replace the app logo in the sidebar.</p>
         <LogoUploader currentLogo={siteLogo} onUpload={handleSiteLogo} type="site" />
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-        <h3 className="font-semibold">Vendor Logos</h3>
+      <div className="ledger-card p-5 space-y-4">
+        <h3 className="font-semibold dark:text-brand-100">Vendor Logos</h3>
         <p className="text-sm text-neutral-500">Upload logo images for each BNPL provider. These will appear on payment cards and detail pages.</p>
         {vendors.map((v) => (
           <div key={v.id} className="space-y-2">
-            <p className="font-medium text-sm">{v.name}</p>
+            <p className="font-medium text-sm dark:text-brand-100">{v.name}</p>
             <LogoUploader currentLogo={v.logoPath} onUpload={(path) => handleVendorLogo(v.id, path)} type="vendor" />
           </div>
         ))}
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-        <h3 className="font-semibold">Shared Payments</h3>
+      <div className="ledger-card p-5 space-y-4">
+        <h3 className="font-semibold dark:text-brand-100">Shared Payments</h3>
         <p className="text-sm text-neutral-500">
           Share your payments with a partner so they can see your totals and payment details.
           Add someone by their email — they must have an account.
@@ -86,19 +86,19 @@ export default function SettingsPage() {
         <PartnerManager key={key} onUpdate={() => setKey((k) => k + 1)} />
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-        <h3 className="font-semibold">Appearance</h3>
+      <div className="ledger-card p-5 space-y-4">
+        <h3 className="font-semibold dark:text-brand-100">Appearance</h3>
         <div className="flex items-center justify-between">
           <div>
-            <p className="font-medium">Theme</p>
+            <p className="font-medium dark:text-brand-100">Theme</p>
             <p className="text-sm text-neutral-500">Toggle between light and dark mode</p>
           </div>
           <ThemeToggle />
         </div>
       </div>
 
-      <div className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4">
-        <h3 className="font-semibold">About</h3>
+      <div className="ledger-card p-5 space-y-4">
+        <h3 className="font-semibold dark:text-brand-100">About</h3>
         <p className="text-sm text-neutral-500">DueFlow v1.0.6</p>
         <p className="text-sm text-neutral-500">Track BNPL plans and subscriptions with partner sharing.</p>
       </div>
